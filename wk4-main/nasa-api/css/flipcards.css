@@ -1,0 +1,46 @@
+.apod-entry {
+  position: relative;
+  width: 400px;
+  height: 300px;
+  overflow: scroll;
+  margin: 15px;
+  padding: 10px;
+}
+
+.apod-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+/* Flip on hover and focus */
+.apod-entry:hover .apod-card,
+.apod-entry:focus-within .apod-card {
+  transform: rotateY(180deg);
+}
+
+/* Card faces */
+.apod-front,
+.apod-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: scroll;
+}
+
+.apod-front {
+  background: #000;
+  color: #fff;
+  text-align: center;
+}
+
+.apod-back {
+  background: #222;
+  color: #fff;
+  padding: 1rem;
+  transform: rotateY(180deg); /* rotate the back so it shows correctly */
+}

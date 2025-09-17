@@ -1,0 +1,54 @@
+.apod-entry {
+  display: inline-block;
+  width: 250px;
+  margin: 15px;
+  background: #111;
+  color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  opacity: 0;                 
+  /* stay at the end of animation */
+  animation-fill-mode: forwards;
+}
+
+/* Keyframe animations */
+@keyframes slideInLeft {
+  from { transform: translateX(-150%) rotate(-20deg); opacity: 0; }
+  to   { transform: translateX(0) rotate(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(150%) rotate(20deg); opacity: 0; }
+  to   { transform: translateX(0) rotate(0); opacity: 1; }
+}
+
+@keyframes slideInTop {
+  from { transform: translateY(-150%) rotate(-10deg); opacity: 0; }
+  to   { transform: translateY(0) rotate(0); opacity: 1; }
+}
+
+@keyframes slideInBottom {
+  from { transform: translateY(150%) rotate(10deg); opacity: 0; }
+  to   { transform: translateY(0) rotate(0); opacity: 1; }
+}
+
+@keyframes fadeInRotate {
+  from { transform: scale(0.5) rotate(-45deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+/* Cycle through 5 animation styles */
+.apod-entry:nth-child(5n+1) { animation: slideInLeft   3s ease-out   0s   forwards; }
+.apod-entry:nth-child(5n+2) { animation: slideInRight  3s ease-out 0.3s forwards; }
+.apod-entry:nth-child(5n+3) { animation: slideInTop    3s ease-out 0.6s forwards; }
+.apod-entry:nth-child(5n+4) { animation: slideInBottom 3s ease-out 0.9s forwards; }
+.apod-entry:nth-child(5n+5) { animation: fadeInRotate  3s ease-out 1.2s forwards; }
+
+/* Accessibility: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .apod-entry {
+    opacity: 1 !important;      /* force visible */
+    transform: none !important; /* cancel off-screen transforms */
+    animation: none !important; /* disable animations */
+  }
+}
